@@ -16,6 +16,10 @@ structure, goroutines, channels, terminal input, ANSI escape sequences, and
 testing. Parts of the code were developed with AI assistance as part of that
 learning process.
 
+## Demo
+
+[Watch the screen recording](assets/demo.mp4)
+
 ## Run
 
 ```bash
