@@ -80,8 +80,7 @@ func (t *Terminal) Size() (rows, columns int, err error) {
 
 // runStty executes the stty command with args attached to the same terminal
 // input used by golethe. This lets stty inspect or modify that terminal's
-// settings. It returns // stty's standard output with surrounding whitespace
-// removed.
+// settings. It returns stty's standard output with surrounding whitespace removed.
 func runStty(args ...string) (string, error) {
 	command := exec.Command("stty", args...) // prepare the command to run
 	command.Stdin = os.Stdin                 // stty reads from standard input
