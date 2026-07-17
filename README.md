@@ -46,7 +46,7 @@ Git tag beginning with `v` is pushed, for example `v1.0.0`.
 | Backspace | Remove the final character |
 | Space | Release the active word into the trail |
 | Enter / Ctrl-L | Clear the active word and trail |
-| Esc / Ctrl-C | Exit cleanly |
+| Ctrl-C | Exit cleanly |
 
 By default, the 10 most recently released words are retained. The next word
 removes the oldest immediately. Nothing is written to disk.

@@ -60,7 +60,7 @@ func run(wordLimit int) error {
 			// if the user presses Ctrl-C or the process receives a termination signal, exit gracefully
 			return nil
 		case event := <-input:
-			// if the input event has no error, handle the rune and redraw the screen
+			// If input has no error, handle the rune and redraw the screen.
 			if event.err == nil {
 				if handleRune(model, event.rune) {
 					return nil
@@ -89,10 +89,7 @@ type inputEvent struct {
 }
 
 // readInput starts a background goroutine that waits for keyboard input and
-// sends decoded runes or one read error through a channel. The main loop can
-// then select between input, resize signals, and interrupts while this
-// goroutine waits. The returned channel is receive-only: this function
-// owns sending events, while the caller owns receiving them.
+// sends decoded runes or one read error through a channel.
 func readInput(reader io.Reader) <-chan inputEvent {
 	events := make(chan inputEvent)
 	go func() {
@@ -109,10 +106,10 @@ func readInput(reader io.Reader) <-chan inputEvent {
 	return events
 }
 
-// handleRune returns true when the program should exit.
+// handleRune returns true when Ctrl-C requests an exit.
 func handleRune(model *engine.Model, r rune) bool {
 	switch r {
-	case 0x1b, 0x03: // Escape and Ctrl-C
+	case 0x03: // Ctrl-C
 		return true
 	case ' ':
 		model.Release()

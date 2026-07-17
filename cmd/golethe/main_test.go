@@ -55,3 +55,9 @@ func TestBackspaceRemovesTheLastRune(t *testing.T) {
 		t.Fatalf("active word = %q, want leth", got)
 	}
 }
+
+func TestCtrlCRequestsExit(t *testing.T) {
+	if !handleRune(&engine.Model{}, 0x03) {
+		t.Fatal("Ctrl-C did not request exit")
+	}
+}
