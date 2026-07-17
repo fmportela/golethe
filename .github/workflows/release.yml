@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-go@v6
+        with:
+          go-version-file: go.mod
+      - name: Build release archives
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+
+          for target in linux/amd64 linux/arm64 darwin/amd64 darwin/arm64; do
+            os=${target%/*}
+            arch=${target#*/}
+            package=golethe_${os}_${arch}
+            package_dir=dist/${package}
+
+            mkdir -p "$package_dir"
+            GOOS="$os" GOARCH="$arch" CGO_ENABLED=0 go build -trimpath -o "$package_dir/golethe" ./cmd/golethe
+            cp README.md LICENSE "$package_dir"
+            tar -C dist -czf "dist/${package}.tar.gz" "$package"
+          done
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/*.tar.gz --generate-notes --title "$GITHUB_REF_NAME"
