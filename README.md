@@ -2,7 +2,6 @@
 
 [![CI](https://github.com/fmportela/golethe/actions/workflows/ci.yml/badge.svg)](https://github.com/fmportela/golethe/actions/workflows/ci.yml)
 [![Latest release](https://img.shields.io/github/v/release/fmportela/golethe)](https://github.com/fmportela/golethe/releases)
-[![License](https://img.shields.io/github/license/fmportela/golethe)](LICENSE)
 [![Go version](https://img.shields.io/badge/go-1.26.5-00ADD8?logo=go)](go.mod)
 
 *lethe it go*
