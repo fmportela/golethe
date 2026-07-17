@@ -25,7 +25,7 @@ make run
 
 Choose a different trail length with `go run ./cmd/golethe -words 8`.
 
-## Install A Release
+## Install a Release
 
 GitHub Releases provide prebuilt archives for Linux and macOS on both `amd64`
 and `arm64`. Download the archive matching your operating system and CPU,
