@@ -18,7 +18,7 @@ learning process.
 
 ## Demo
 
-[Watch the screen recording](assets/demo.mp4)
+[Watch the screen recording](https://github.com/user-attachments/assets/b8ecb466-55c3-482a-8889-5c521ab41808)
 
 ## Run
 
